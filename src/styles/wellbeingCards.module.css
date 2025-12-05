@@ -1,0 +1,82 @@
+/* Container */
+.container {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Grid layout */
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Individual Card */
+.card {
+  width: 260px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: 0.25s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Emoji Icon */
+.emoji {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+/* Description */
+.desc {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* Button */
+.btn {
+  margin-top: auto;
+  padding: 10px 16px;
+  background: #0077ff;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #005fcc;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}

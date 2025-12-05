@@ -1,0 +1,112 @@
+/* ---------- PAGE CONTAINER ---------- */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 25px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 12px;
+}
+
+/* ---------- QUESTION CARD ---------- */
+.questionCard {
+  background: #fff;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.questionCard p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Drop-down */
+.select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.mainBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.mainBtn:hover {
+  background: #005fcc;
+}
+
+/* Secondary Button */
+.secondaryBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.secondaryBtn:hover {
+  background: #1e8a36;
+}
+
+/* ---------- DIVIDER ---------- */
+.divider {
+  height: 2px;
+  width: 100%;
+  background: #ddd;
+  margin: 35px 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .questionCard {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .mainBtn,
+  .secondaryBtn {
+    font-size: 16px;
+  }
+}

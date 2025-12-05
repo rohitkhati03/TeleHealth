@@ -1,0 +1,157 @@
+/* -----------------------------------
+   SECTION WRAPPER
+----------------------------------- */
+.cardsSection {
+  padding: 40px 20px;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* -----------------------------------
+   HORIZONTAL SLIDER
+----------------------------------- */
+.sliderWrapper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+}
+
+.sliderWrapper::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+/* -----------------------------------
+   CARD STYLING
+----------------------------------- */
+.card {
+  min-width: 260px;
+  max-width: 260px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* -----------------------------------
+   IMAGE + STATUS
+----------------------------------- */
+.imageWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.doctorImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e3e3e3;
+}
+
+/* Online / Offline Badge */
+.statusBadge {
+  position: absolute;
+  bottom: 5px;
+  right: 80px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  color: white;
+}
+
+.online {
+  background: #4CAF50;
+}
+
+.offline {
+  background: #b4b4b4;
+}
+
+/* -----------------------------------
+   NAME + RATING
+----------------------------------- */
+.doctorName {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ratingBox {
+  margin-top: 4px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ratingSub {
+  color: gray;
+  font-size: 14px;
+}
+
+/* -----------------------------------
+   DETAILS
+----------------------------------- */
+.detailsBox {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.detailsBox p {
+  margin: 4px 0;
+}
+
+/* -----------------------------------
+   CTA BUTTON
+----------------------------------- */
+.consultBtn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.consultBtn:hover {
+  background: #005fc7;
+}
+
+/* -----------------------------------
+   RESPONSIVE
+----------------------------------- */
+@media (max-width: 500px) {
+  .card {
+    min-width: 220px;
+  }
+
+  .doctorImg {
+    width: 80px;
+    height: 80px;
+  }
+}

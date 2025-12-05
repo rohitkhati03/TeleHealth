@@ -1,0 +1,306 @@
+/* ----------------------------------------------------
+   GLOBAL PAGE STYLING
+---------------------------------------------------- */
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h2, h3, h4 {
+  margin: 10px 0;
+}
+
+.step-box {
+  max-width: 650px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* ----------------------------------------------------
+   TOP FILTER ROW (Search + Category Same Line)
+---------------------------------------------------- */
+.top-filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.search-group,
+.dropdown-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-icon {
+  color: #2E5BFF;
+  font-size: 20px;
+}
+
+.search-bar,
+.category-dropdown {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 220px;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-bar:focus,
+.category-dropdown:focus {
+  border-color: #2E5BFF;
+  box-shadow: 0 0 6px rgba(46,91,255,0.25);
+}
+
+/* ----------------------------------------------------
+   DOCTOR GRID (Professional Minimal Cards)
+---------------------------------------------------- */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+  padding: 15px;
+}
+
+.doctor-card-min {
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  transition: 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.doctor-card-min:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-color: #2E5BFF;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.doc-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #2E5BFF;
+  object-fit: cover;
+}
+
+/* Online indicator */
+.status-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.status-dot.online { background: #2ecc71; }
+.status-dot.offline { background: #ccc; }
+
+.doc-name {
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.doc-specialty {
+  color: #666;
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.doc-experience {
+  background: #eef4ff;
+  color: #2E5BFF;
+  padding: 4px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.doc-fee {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+/* Book Button */
+.doc-book-btn {
+  width: 100%;
+  padding: 10px;
+  background: #2E5BFF;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.doc-book-btn:hover {
+  background: #1b4cd1;
+}
+
+/* ----------------------------------------------------
+   TIME SLOT SELECTION PAGE
+---------------------------------------------------- */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.slot-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  background: #060606;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.slot-btn:hover {
+  background: #128e6b;
+  border-color: #2E5BFF;
+}
+
+.active-slot {
+  background: #2E5BFF !important;
+  color: white;
+  border-color: #2E5BFF !important;
+}
+
+/* ----------------------------------------------------
+   FORM PAGE (Personal Details)
+---------------------------------------------------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+textarea:focus {
+  border-color: #2E5BFF;
+  box-shadow: 0 0 5px rgba(46,91,255,0.25);
+}
+
+/* ----------------------------------------------------
+   CONFIRMATION PAGE
+---------------------------------------------------- */
+.summary-box {
+  background: #f8faff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #dde7ff;
+  margin-top: 15px;
+}
+
+.summary-box h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.confirm-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #2E5BFF;
+  color: white;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.confirm-btn:hover {
+  background: #1b4cd1;
+}
+
+/* ----------------------------------------------------
+   NAVIGATION BUTTONS
+---------------------------------------------------- */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: #ddd;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.next-btn {
+  padding: 10px 20px;
+  background: #2E5BFF;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.next-btn:disabled {
+  background: #94b0ff;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE DESIGN (MOBILE)
+---------------------------------------------------- */
+@media (max-width: 650px) {
+
+  .top-filter-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar,
+  .category-dropdown {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .doctor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+}

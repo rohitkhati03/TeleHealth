@@ -1,0 +1,141 @@
+/* RESET OVERFLOW ISSUES */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   MAIN FOOTER (NO SCROLL, NO EXTRA WIDTH)
+============================================================ */
+.footer {
+  width: 100%;
+  overflow-x: hidden; /* Prevents any overflow */
+  background: linear-gradient(180deg, #f8faff 0%, #eef3ff 100%);
+  padding: 50px 0 20px 0;
+  border-top: 3px solid #2E5BFF;
+  margin-top: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* ============================================================
+   PROPER RESPONSIVE CONTAINER
+============================================================ */
+.footer-container {
+  max-width: 1200px;       /* Ensures it never exceeds screen */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;         /* Safe padding */
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+}
+
+/* ============================================================
+   TITLES
+============================================================ */
+.footer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2E5BFF;
+  margin-bottom: 15px;
+}
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+.footer-description {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* ============================================================
+   SOCIAL ICONS
+============================================================ */
+.social-icons a {
+  margin-right: 10px;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d9e1ff;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #2E5BFF;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   QUICK LINKS
+============================================================ */
+.footer-links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #444;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: #2E5BFF;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   CONTACT INFO
+============================================================ */
+.contact-list li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: flex-start;
+}
+
+.contact-list span {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   FOOTER BOTTOM (ALSO NO WIDTH ISSUES)
+============================================================ */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 25px auto 0 auto;
+  padding: 12px 20px;
+  border-top: 1px solid #d9e1ff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.bottom-links a {
+  margin: 0 10px;
+  color: #2E5BFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bottom-links a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE FIXES
+============================================================ */
+@media (max-width: 600px) {
+  .footer-title {
+    font-size: 18px;
+  }
+
+  .footer-description {
+    font-size: 14px;
+  }
+}

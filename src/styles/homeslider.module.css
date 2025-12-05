@@ -1,0 +1,148 @@
+/* -----------------------------------------------------
+   MAIN WRAPPER
+------------------------------------------------------ */
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  max-height: 550px;
+  overflow: hidden;
+  border-radius: 14px;
+  margin: 0 auto 35px auto;
+}
+
+/* -----------------------------------------------------
+   SLIDER TRACK
+------------------------------------------------------ */
+.sliderTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+/* -----------------------------------------------------
+   EACH SLIDE
+------------------------------------------------------ */
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.slideImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* -----------------------------------------------------
+   GRADIENT OVERLAY & TEXT
+------------------------------------------------------ */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  padding: 30px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.2),
+    transparent
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* -----------------------------------------------------
+   ARROWS
+------------------------------------------------------ */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  color: #333;
+  border: none;
+  font-size: 30px;
+  padding: 10px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 10;
+}
+
+.arrow:hover {
+  background: #2E5BFF;
+  color: #fff;
+}
+
+.left {
+  left: 18px;
+}
+
+.right {
+  right: 18px;
+}
+
+/* -----------------------------------------------------
+   DOTS
+------------------------------------------------------ */
+.dotsWrapper {
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #dcdcdc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.activeDot {
+  background: #2E5BFF;
+  transform: scale(1.25);
+}
+
+/* -----------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------ */
+@media (max-width: 768px) {
+  .sliderWrapper {
+    height: 45vh;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .arrow {
+    font-size: 22px;
+    padding: 6px 10px;
+  }
+}
