@@ -18,15 +18,61 @@ export default function SOS() {
     "Stroke",
   ];
 
+  // 🚨 SEND SOS → WhatsApp with address + emergency
   const triggerSOS = () => {
     setPanicMode(true);
     setTimeout(() => setPanicMode(false), 3000);
 
-    alert(
-      `🚨 SOS SENT!\n\nEmergency: ${selectedEmergency || "General"}\nMessage: ${
-        message || "No message"
-      }\nLocation: Auto-detecting...`
+    if (!navigator.geolocation) {
+      alert("Geolocation not supported");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+        );
+        const data = await res.json();
+        const address = data.display_name || "Address not available";
+
+        const parentNumber = "916397859115"; // digits only
+
+        const text = `🚨 SOS ALERT 🚨
+Emergency: ${selectedEmergency || "General"}
+Message: ${message || "No message"}
+
+Address:
+${address}
+
+Map:
+https://www.google.com/maps?q=${lat},${lng}`;
+
+        window.location.href =
+          "https://wa.me/" +
+          parentNumber +
+          "?text=" +
+          encodeURIComponent(text);
+      },
+      () => alert("Please allow location access"),
+      { enableHighAccuracy: true }
     );
+  };
+
+  // 📞 CALL SOS 112
+  const callSOS112 = () => {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    window.location.href = "tel:112";
+
+    if (!isMobile) {
+      setTimeout(() => {
+        alert("Choose a calling application to dial emergency number 112.");
+      }, 500);
+    }
   };
 
   return (
@@ -52,58 +98,46 @@ export default function SOS() {
           Emergency SOS
         </h2>
 
-       {/* QUICK EMERGENCY BUTTONS */}
-<div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "12px",
-    marginBottom: "25px",
-  }}
->
-  {emergencyTypes.map((type) => (
-    <button
-      key={type}
-      onClick={() => setSelectedEmergency(type)}
-      style={{
-        padding: "12px 20px",
-        borderRadius: "30px",
-        fontWeight: "600",
-        cursor: "pointer",
-        transition: "0.25s",
-        fontSize: "15px",
-        border: selectedEmergency === type ? "2px solid #B00020" : "2px solid #d5d5d5",
-        background: selectedEmergency === type ? "#FFD6D6" : "#ffffff",
-        color: selectedEmergency === type ? "#B00020" : "#333",
-        boxShadow:
-          selectedEmergency === type
-            ? "0 4px 10px rgba(176,0,32,0.3)"
-            : "0 2px 6px rgba(0,0,0,0.06)",
-      }}
-      onMouseEnter={(e) => {
-        if (selectedEmergency !== type) {
-          e.target.style.background = "#f4f4f4";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (selectedEmergency !== type) {
-          e.target.style.background = "#ffffff";
-        }
-      }}
-    >
-      {type}
-    </button>
-  ))}
-</div>
-
+        {/* QUICK EMERGENCY BUTTONS */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "12px",
+            marginBottom: "25px",
+          }}
+        >
+          {emergencyTypes.map((type) => (
+            <button
+              key={type}
+              onClick={() => setSelectedEmergency(type)}
+              style={{
+                padding: "12px 20px",
+                borderRadius: "30px",
+                fontWeight: "600",
+                cursor: "pointer",
+                fontSize: "15px",
+                border:
+                  selectedEmergency === type
+                    ? "2px solid #B00020"
+                    : "2px solid #d5d5d5",
+                background:
+                  selectedEmergency === type ? "#FFD6D6" : "#ffffff",
+                color:
+                  selectedEmergency === type ? "#B00020" : "#333",
+              }}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
 
         {/* SOS MESSAGE */}
         <div
           style={{
             maxWidth: "700px",
             margin: "0 auto",
-            marginTop: "10px",
             display: "flex",
             flexDirection: "column",
             gap: "12px",
@@ -113,21 +147,28 @@ export default function SOS() {
             placeholder="Add additional emergency details..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            rows={4}
             style={{
               width: "100%",
               padding: "14px",
               borderRadius: "10px",
               border: "1px solid #ccc",
               fontSize: "16px",
-              outline: "none",
-              boxShadow: "0 3px 8px rgba(0,0,0,0.08)",
             }}
-            rows={4}
           />
         </div>
 
-        {/* BIG SOS BUTTON */}
-        <div style={{ textAlign: "center", marginTop: "25px" }}>
+        {/* BIG SOS + CALL BUTTONS */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "25px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            flexWrap: "wrap",
+          }}
+        >
           <button
             onClick={triggerSOS}
             style={{
@@ -139,14 +180,25 @@ export default function SOS() {
               fontSize: "22px",
               fontWeight: "700",
               cursor: "pointer",
-              letterSpacing: "1px",
-              boxShadow: "0 5px 12px rgba(176,0,32,0.4)",
-              transition: "0.2s",
             }}
-            onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
-            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
           >
             🚨 SEND SOS NOW
+          </button>
+
+          <button
+            onClick={callSOS112}
+            style={{
+              background: "#000",
+              color: "white",
+              padding: "18px 40px",
+              border: "none",
+              borderRadius: "14px",
+              fontSize: "22px",
+              fontWeight: "700",
+              cursor: "pointer",
+            }}
+          >
+            📞 CALL SOS (112)
           </button>
         </div>
 
