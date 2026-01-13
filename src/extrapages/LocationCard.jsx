@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
 export default function LocationCard() {
-  const [address, setAddress] = useState("Fetching location...");
+  const [address, setAddress] = useState({});
   const [coords, setCoords] = useState("");
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      setAddress("Geolocation not supported");
       return;
     }
 
@@ -19,15 +18,15 @@ export default function LocationCard() {
 
         try {
           const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`
           );
           const data = await res.json();
-          setAddress(data.display_name || "Address not available");
+          setAddress(data.address || {});
         } catch {
-          setAddress("Unable to fetch address");
+          setAddress({});
         }
       },
-      () => setAddress("Permission denied"),
+      () => {},
       { enableHighAccuracy: true }
     );
   }, []);
@@ -46,16 +45,28 @@ export default function LocationCard() {
         Live Location
       </h2>
 
+      {/* Address line 1 */}
       <p style={{ fontSize: "15px", fontWeight: "600" }}>
-        📍 {address}
+        House No: {address.house_number || "NA"}, 
+        Street: {address.road || "NA"}
       </p>
 
+      {/* Address line 2 */}
+      <p style={{ fontSize: "15px", fontWeight: "600" }}>
+        Village: {address.village || "NA"}, 
+        City: {address.city || address.town || "NA"}, 
+        Pincode: {address.postcode || "NA"}
+      </p>
+
+      <br />
+
+      {/* Coordinates */}
       <p style={{ fontSize: "14px", color: "#555" }}>
-        🌍 {coords}
+        {coords}
       </p>
 
       <small style={{ color: "#555" }}>
-        *Enable location permissions for accuracy
+        Enable location permissions for accuracy
       </small>
     </div>
   );

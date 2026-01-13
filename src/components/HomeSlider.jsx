@@ -4,7 +4,7 @@ import styles from "../styles/homeslider.module.css";
 // Import Local Slider Images
 import firstslider from "../assets/Slider_01.png";
 import secondslider from "../assets/secondsliderimg.jpg";
-import thirdslider from "../assets/thirdsliderimg.jpg";
+import thirdslider from "../assets/thirdsliderimg.png";
 
 // Store images inside array
 const images = [firstslider, secondslider, thirdslider];
@@ -16,7 +16,7 @@ export default function HomeSlider() {
   useEffect(() => {
     const autoSlide = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
-    }, 4500);
+    }, 45000);
     return () => clearInterval(autoSlide);
   }, []);
 

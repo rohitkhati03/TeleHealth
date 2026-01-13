@@ -1,45 +1,41 @@
 import { useEffect, useState } from "react";
 
-export default function ContactsCard() {
+export default function ContactsCard({ userId }) {
   const [primaryContact, setPrimaryContact] = useState("");
   const [inputNumber, setInputNumber] = useState("");
 
-  // Load saved contact
+  // 🔑 user-specific storage key
+  const storageKey = `primaryContact_${userId}`;
+
+  // 📥 Load saved contact for this user
   useEffect(() => {
-    const saved = localStorage.getItem("primaryContact");
+    const saved = localStorage.getItem(storageKey);
     if (saved) {
       setPrimaryContact(saved);
     }
-  }, []);
+  }, [storageKey]);
 
-  // Save primary contact
+  // 💾 Save primary contact
   const savePrimaryContact = () => {
     if (!/^\d{10,13}$/.test(inputNumber)) {
-      alert("Enter a valid phone number with country code");
+      alert("📵 Enter a valid phone number with country code");
       return;
     }
 
-    localStorage.setItem("primaryContact", inputNumber);
+    localStorage.setItem(storageKey, inputNumber);
     setPrimaryContact(inputNumber);
     setInputNumber("");
-    alert("Primary contact saved");
+    alert("✅ Primary contact saved");
   };
 
-  // Call primary contact
+  // 📞 Call primary contact
   const callPrimaryContact = () => {
     if (!primaryContact) {
-      alert("No primary contact set");
+      alert("⚠️ No primary contact set");
       return;
     }
 
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     window.location.href = `tel:${primaryContact}`;
-
-    if (!isMobile) {
-      setTimeout(() => {
-        alert("Choose a calling application to place the call.");
-      }, 500);
-    }
   };
 
   return (
@@ -53,7 +49,7 @@ export default function ContactsCard() {
       }}
     >
       <h2 style={{ color: "#0A7A17", marginBottom: "12px", fontSize: "20px" }}>
-        Emergency Contacts
+        📇 Emergency Contacts
       </h2>
 
       <p style={{ marginBottom: "10px", lineHeight: "1.6" }}>
@@ -63,10 +59,9 @@ export default function ContactsCard() {
         👤 Close Friend
       </p>
 
-      {/* SET PRIMARY CONTACT */}
       <input
         type="tel"
-        placeholder="Set primary contact number"
+        placeholder="📱 Set primary contact number"
         value={inputNumber}
         onChange={(e) => setInputNumber(e.target.value)}
         style={{
@@ -84,25 +79,24 @@ export default function ContactsCard() {
         style={{
           background: "#0A7A17",
           color: "white",
-          padding: "8px 18px",
+          padding: "8px",
           border: "none",
           borderRadius: "8px",
           cursor: "pointer",
           fontWeight: "600",
-          marginBottom: "10px",
           width: "100%",
+          marginBottom: "10px",
         }}
       >
-        Set Primary Contact
+        💾 Set Primary Contact
       </button>
 
-      {/* CALL PRIMARY CONTACT */}
       <button
         onClick={callPrimaryContact}
         style={{
           background: "#0A7A17",
           color: "white",
-          padding: "8px 18px",
+          padding: "8px",
           border: "none",
           borderRadius: "8px",
           cursor: "pointer",
@@ -110,7 +104,7 @@ export default function ContactsCard() {
           width: "100%",
         }}
       >
-        Call Primary Contact
+        📞 Call Primary Contact
       </button>
     </div>
   );
