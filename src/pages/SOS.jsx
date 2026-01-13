@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import LocationCard from "../extrapages/LocationCard";
 import EmergencyCard from "../extrapages/EmergencyCard";
 import ContactsCard from "../extrapages/ContactsCard";
+import SosHeadImage from "../extrapages/SosHeadImage";
 
 export default function SOS() {
   const [message, setMessage] = useState("");
@@ -97,6 +98,10 @@ https://www.google.com/maps?q=${lat},${lng}`;
         >
           Emergency SOS
         </h2>
+
+        <SosHeadImage/>
+        <br/>
+        <br/>
 
         {/* QUICK EMERGENCY BUTTONS */}
         <div
