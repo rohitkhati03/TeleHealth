@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/homeslider.module.css";
 
 // Import Local Slider Images
-import firstslider from "../assets/Slider_01.png";
+import firstslider from "../assets/firstsliderimg.png"
+import firstsecondslider from "../assets/Slider_01.png";
 import secondslider from "../assets/secondsliderimg.jpg";
 import thirdslider from "../assets/thirdsliderimg.png";
 
 // Store images inside array
-const images = [firstslider, secondslider, thirdslider];
+const images = [firstslider, firstsecondslider, secondslider, thirdslider];
 
 export default function HomeSlider() {
   const [index, setIndex] = useState(0);
@@ -16,12 +17,15 @@ export default function HomeSlider() {
   useEffect(() => {
     const autoSlide = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
-    }, 45000);
+    }, 4500);
+
     return () => clearInterval(autoSlide);
   }, []);
 
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
-  const next = () => setIndex((i) => (i + 1) % images.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + images.length) % images.length);
+  const next = () =>
+    setIndex((i) => (i + 1) % images.length);
 
   return (
     <div className={styles.sliderWrapper}>
@@ -31,11 +35,17 @@ export default function HomeSlider() {
       >
         {images.map((src, i) => (
           <div className={styles.slide} key={i}>
-            <img src={src} alt={`Slide ${i + 1}`} className={styles.slideImg} />
+            <img
+              src={src}
+              alt={`Slide ${i + 1}`}
+              className={styles.slideImg}
+            />
 
             {/* Overlay Text */}
             <div className={styles.overlay}>
-              <h2 className={styles.title}>Your Health, Our Priority</h2>
+              <h2 className={styles.title}>
+                Your Health, Our Priority
+              </h2>
               <p className={styles.subtitle}>
                 Trusted TeleHealth Services from Top Doctors
               </p>
@@ -45,10 +55,16 @@ export default function HomeSlider() {
       </div>
 
       {/* Navigation Arrows */}
-      <button className={`${styles.arrow} ${styles.left}`} onClick={prev}>
+      <button
+        className={`${styles.arrow} ${styles.left}`}
+        onClick={prev}
+      >
         ❮
       </button>
-      <button className={`${styles.arrow} ${styles.right}`} onClick={next}>
+      <button
+        className={`${styles.arrow} ${styles.right}`}
+        onClick={next}
+      >
         ❯
       </button>
 
@@ -57,7 +73,9 @@ export default function HomeSlider() {
         {images.map((_, i) => (
           <span
             key={i}
-            className={`${styles.dot} ${index === i ? styles.activeDot : ""}`}
+            className={`${styles.dot} ${
+              index === i ? styles.activeDot : ""
+            }`}
             onClick={() => setIndex(i)}
           ></span>
         ))}
